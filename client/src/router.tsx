@@ -53,9 +53,9 @@ const router = createBrowserRouter(
         <Route
           path="admin"
           element={
-            // <AdminProtected>
-            <Outlet />
-            // </AdminProtected>
+            <AdminProtected>
+              <Outlet />
+            </AdminProtected>
           }
         >
           <Route index element={<AdminPage />} />

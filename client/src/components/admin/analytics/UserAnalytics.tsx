@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
 import {
   Area,
   AreaChart,
   Tooltip,
-  CartesianGrid,
   ResponsiveContainer,
   XAxis,
   YAxis,

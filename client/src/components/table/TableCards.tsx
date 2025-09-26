@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { BsPlusCircle } from "react-icons/bs";
 import {
   MdTableRestaurant,
@@ -10,22 +10,32 @@ import { useNavigate } from "react-router-dom";
 import { format } from "timeago.js";
 import itemUserStore from "../../lib/itemUserStore";
 import toast from "react-hot-toast";
-import { GrDashboard } from "react-icons/gr";
 import { FaEye } from "react-icons/fa6";
-import { FaRegEdit } from "react-icons/fa";
+import { BiSearch } from "react-icons/bi";
+import { v4 as uuidv4 } from "uuid";
+import { formatDateAndTime } from "../../context";
+import { FiDelete } from "react-icons/fi";
 
 const TableCards = ({
   setIsModalOpen,
   tableData,
+  setSelectedUser,
+  selectedUser,
   name,
   phone,
   guests,
+  setIsModalOpenUser,
+  setFilteredUsers,
 }: {
   setIsModalOpen: (open: boolean) => void;
   name: string;
   phone: number | string;
   guests: number;
   tableData: any;
+  selectedUser: any;
+  setIsModalOpenUser: any;
+  setSelectedUser: any;
+  setFilteredUsers: any;
 }) => {
   const [activeTab, setActiveTab] = useState("available");
   // const customerData = itemUserStore((state: any) => state.user);
@@ -33,7 +43,7 @@ const TableCards = ({
   // Sample table data
   console.log("tableData", tableData);
   const dispatch = itemUserStore((state: any) => state.addUser);
-  const filteredTables = tableData?.filter((table) => {
+  const filteredTables = tableData?.filter((table: any) => {
     if (activeTab === "available") return table.status === "available";
     if (activeTab === "reserved") return table.status === "reserved";
     if (activeTab === "on-dine") return table.status === "on-dine";
@@ -45,6 +55,15 @@ const TableCards = ({
     if (name) {
       navigate("/menu");
       dispatch({ name, phone, guests, table: { tableId: id } });
+      toast.success("Now you can add menu");
+    } else if (selectedUser) {
+      navigate("/menu");
+      dispatch({
+        name: selectedUser.name,
+        phone: selectedUser.phone,
+        guests: 1,
+        table: { tableId: id },
+      });
       toast.success("Now you can add menu");
     } else {
       toast.error("Please first choose user or create");
@@ -58,22 +77,71 @@ const TableCards = ({
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
       <div className="w-64 bg-white shadow-md flex flex-col">
-        <div
-          className="w-full  px-2 py-2
-        "
-        >
-          <button
-            onClick={() => {
-              setIsModalOpen(true);
+        {selectedUser ? (
+          <div className="flex items-center justify-between px-4 py-3">
+            <div className="flex flex-col items-start">
+              <h1 className="text-md text-[#000] font-semibold tracking-wide">
+                {selectedUser?.name || "Customer Name"}
+              </h1>
 
-              console.log("hell");
-            }}
-            className="  w-full cursor-pointer gap-2 bg-[#00C951] hover:text-white  justify-center text-center flex text-[#fff] rounded-md py-2 px-8 items-center"
+              <p className="text-xs text-[#ababab] font-medium mt-1">
+                #
+                {selectedUser._id?.toString()?.substring(2, 8) ||
+                  uuidv4().toString()?.substring(2, 8) ||
+                  "N/A"}
+              </p>
+              <p className="text-xs text-[#ababab] font-medium mt-2">
+                {formatDateAndTime(Date.now())}
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setSelectedUser(null);
+                  setFilteredUsers([]);
+                }}
+                className="bg-[#00ca3b] cursor-pointer p-2 text-sm text-white font-bold rounded-lg"
+              >
+                <FiDelete />
+              </button>
+              <button
+                onClick={() => {
+                  setIsModalOpenUser(true);
+
+                  setFilteredUsers([]);
+                }}
+                className="bg-[#00ca3b] cursor-pointer  p-3 text-sm text-white font-bold rounded-lg"
+              >
+                RN
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div
+            className="w-full  gap-2 flex px-2 py-2
+        "
           >
-            <BsPlusCircle size={20} />
-            <p>New Reservation</p>
-          </button>
-        </div>
+            <button
+              onClick={() => {
+                setIsModalOpen(true);
+              }}
+              className="  w-full cursor-pointer gap-2 bg-[#00C951] hover:text-white  justify-center text-center flex text-[#fff] rounded-md py-2 text-xs px-2 items-center"
+            >
+              <BsPlusCircle size={17} />
+              <p>New Reservation</p>
+            </button>
+            <div
+              onClick={() => {
+                setIsModalOpenUser(true);
+                console.log("hello world");
+              }}
+              className="  text-xs cursor-pointer  bg-[#00C951] hover:text-white  justify-center text-center flex text-[#fff] rounded-md py-2 px-2 items-center"
+            >
+              <BiSearch />
+              Search
+            </div>
+          </div>
+        )}
 
         <div className="p-4">
           <div className="mb-6">
@@ -163,7 +231,7 @@ const TableCards = ({
 
         {/* Table Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredTables.map((table) => (
+          {filteredTables.map((table: any) => (
             <div
               key={table.id}
               className="bg-[#DCFCE6] rounded-xl shadow-sm overflow-hidden border border-white"

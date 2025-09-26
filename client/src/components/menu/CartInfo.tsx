@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
 import useItemStore from "../../lib/store";
 
 const CartInfo = () => {
-  const scrolLRef = useRef();
+  const scrolLRef = useRef<HTMLDivElement>(null);
   const cartData = useItemStore((state) => state.items);
   const removeItem = useItemStore((state) => state.removeItem);
   useEffect(() => {

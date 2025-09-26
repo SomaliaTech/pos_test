@@ -1,5 +1,3 @@
-import React from "react";
-import useOrderDetailsStore from "../../lib/order-details-store";
 import { formatDateAndTime } from "../../context";
 import { useQuery } from "@tanstack/react-query";
 import { axiosIntence } from "../../lib/axiosIntence";
@@ -152,7 +150,7 @@ const OrderDetailsCard = () => {
                 </h2>
 
                 <div className="space-y-4">
-                  {orderInfo?.items?.map((item, index) => (
+                  {orderInfo?.items?.map((item: any, index: number) => (
                     <div className="flex gap-2 border-b border-gray-100 pb-1">
                       <div className="relative">
                         <img

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import LeftMenu from "../../components/shared/LeftMenu";
-import { useNavigate } from "react-router-dom";
 import Modal from "../../components/shared/Modal";
 import { axiosIntence } from "../../lib/axiosIntence";
 
 import toast from "react-hot-toast";
 import TableCards from "../../components/table/TableCards";
+import itemUserStore from "../../lib/itemUserStore";
+import Search from "../../components/shared/Search";
 
 const TablesMenagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +24,6 @@ const TablesMenagement = () => {
     if (guestCount <= 0) return;
     setGuestCount((prev) => prev - 1);
   };
-  const navigate = useNavigate();
   useEffect(() => {
     document.title = "POS | Tables";
   }, []);
@@ -50,7 +50,12 @@ const TablesMenagement = () => {
     setIsModalOpen(false);
     toast.success("you can reservered postion now", { position: "top-right" });
   };
+  const item = itemUserStore((state: any) => state.user);
 
+  const [selectedUser, setSelectedUser] = useState(item);
+  const [isModalOpenUser, setIsModalOpenUser] = useState(false);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  console.log(selectedUser);
   return (
     <>
       <section className="bg-[#E8EAE7] w-full flex h-screen overflow-hidden">
@@ -64,9 +69,13 @@ const TablesMenagement = () => {
           <div className="flex-1">
             <TableCards
               name={name}
+              setIsModalOpenUser={setIsModalOpenUser}
               phone={phone}
+              setSelectedUser={setSelectedUser}
+              setFilteredUsers={setFilteredUsers}
               guests={guestCount}
               tableData={resData}
+              selectedUser={selectedUser}
               setIsModalOpen={setIsModalOpen}
             />
           </div>
@@ -135,6 +144,15 @@ const TablesMenagement = () => {
           Create Order
         </button>
       </Modal>
+
+      {isModalOpenUser && (
+        <Search
+          filteredUsers={filteredUsers}
+          setFilteredUsers={setFilteredUsers}
+          setIsModalOpen={setIsModalOpenUser}
+          setSelectedUser={setSelectedUser}
+        />
+      )}
     </>
   );
 };

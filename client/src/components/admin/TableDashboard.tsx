@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@mui/material";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "timeago.js";
 
 // function createData(
@@ -21,11 +21,7 @@ import { format } from "timeago.js";
 //   protein: number
 // ) {
 //   return { name, calories, fat, carbs, protein };
-// }
-interface Order {
-  createdAt: string; // Assuming createdAt is a string
-  // Other properties...
-}
+
 function TableDashboard() {
   const [transections, setTransections] = useState<any[]>([]);
   const isLoading = false;

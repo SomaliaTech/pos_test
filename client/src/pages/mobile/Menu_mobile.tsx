@@ -1,13 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { BiArrowBack } from "react-icons/bi";
-import { BsPersonFill, BsPersonFillCheck } from "react-icons/bs";
+import { BsPersonFill } from "react-icons/bs";
 import { MdRequestQuote } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 import { FaX } from "react-icons/fa6";
 
-type Props = {};
-function dasa({}: Props) {
+function TestedMobile() {
   const [showModel, setShowModel] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -48,7 +46,7 @@ function dasa({}: Props) {
     setIsModalOpen(false);
     toast.success("you can reservered postion now", { position: "top-right" });
   };
-  const navigator = useNavigate();
+
   return (
     <>
       <div className="h-screen bg-[#E4E7E6]">
@@ -269,4 +267,4 @@ function dasa({}: Props) {
     </>
   );
 }
-export default dasa;
+export default TestedMobile;

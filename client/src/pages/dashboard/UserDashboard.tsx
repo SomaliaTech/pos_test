@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { BsCashCoin } from "react-icons/bs";
-import { GrInProgress } from "react-icons/gr";
+import { useEffect } from "react";
 
 import LeftMenu from "../../components/shared/LeftMenu";
 import Greetings from "../../components/home/Greetings";

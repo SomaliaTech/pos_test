@@ -1,14 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
-
 import { IoNotificationsOutline } from "react-icons/io5";
-
-import toast from "react-hot-toast";
 
 import { format } from "timeago.js";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { axiosIntence } from "../../lib/axiosIntence";
+import { useState } from "react";
 
 // const ENDPOINT = process.env.NEXT_PUBLIC_SOCKET_SERVER_URL || "";
 
@@ -84,7 +80,7 @@ function DashboardHeader() {
                 <div className="flex items-center justify-between">
                   <p className="text-gray-200 max-w-[200px]">{item.title} </p>
                   <p
-                    // onClick={() => updatenotification(item._id)}
+                    onClick={() => setNotfications(item._id)}
                     className="cursor-pointer"
                   >
                     "Read"

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { enqueueSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { axiosIntence } from "../../lib/axiosIntence";
-import userUserStore from "../../lib/userStore";
 import useUserStore from "../../lib/userStore";
 
 const Login = () => {
@@ -13,7 +12,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const dispatch = userUserStore((state: any) => state.addUser);
 
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

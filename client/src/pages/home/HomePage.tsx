@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
-import { MdRestaurantMenu } from "react-icons/md";
+import { useEffect } from "react";
 
 import Bill from "../../components/menu/Bill";
 import CustomerInfo from "../../components/menu/CustomerInfo";
 import CartInfo from "../../components/menu/CartInfo";
 import MenuContainer from "../../components/menu/MenuContainer";
 import LeftMenu from "../../components/shared/LeftMenu";
-import { SiPrestashop } from "react-icons/si";
 const Menu = () => {
   useEffect(() => {
     document.title = "POS | Menu";

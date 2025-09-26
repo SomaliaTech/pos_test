@@ -15,7 +15,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   }
 
   // fallback → redirect unauthorized roles
-  return <Navigate to={`/welcome/${user.table}`} replace />;
+  return <Navigate to={`/welcome/guest`} replace />;
 };
 
 export default ProtectedRoute;

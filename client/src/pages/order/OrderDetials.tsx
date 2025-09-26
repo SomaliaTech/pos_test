@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
-import OrderManagementCard from "../../components/order/OrderManagmentCard";
 import LeftMenu from "../../components/shared/LeftMenu";
 import OrderDetailsCard from "../../components/order/OrderDetailsCard";
 const OrderDetails = () => {

@@ -1,11 +1,6 @@
-import React, { useState } from "react";
-import {
-  MdOutlineQrCodeScanner,
-  MdOutlineReport,
-  MdTableRestaurant,
-} from "react-icons/md";
+import { useState } from "react";
+import { MdOutlineReport, MdTableRestaurant } from "react-icons/md";
 import { BiLogOut, BiUser } from "react-icons/bi";
-import { TbBrandAirtable } from "react-icons/tb";
 import { FaAlignRight, FaChartPie, FaHistory } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
 import useUserStore from "../../lib/userStore";

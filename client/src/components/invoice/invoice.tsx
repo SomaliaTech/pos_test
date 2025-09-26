@@ -101,7 +101,7 @@ const Invoice = ({ orderInfo, setShowInvoice }: any) => {
           <div className="mt-4 border-t pt-4">
             <h3 className="text-sm font-semibold">Items Ordered</h3>
             <ul className="text-sm text-gray-700">
-              {orderInfo?.items?.map((item, index) => (
+              {orderInfo?.items?.map((item: any, index: number) => (
                 <li
                   key={index}
                   className="flex justify-between items-center text-xs"

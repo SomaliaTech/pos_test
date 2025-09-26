@@ -12,26 +12,15 @@ import { Link, useLocation } from "react-router-dom";
 import toast from "react-hot-toast";
 import useUserStore from "../../lib/userStore";
 import useItemStore from "../../lib/store";
-import { v4 as uuidv4 } from "uuid";
-
-interface CartItem {
-  id: string;
-  name: string;
-  price: number;
-  qty: number;
-  size?: string;
-  image: string;
-}
 
 const WelcomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showCartModel, setShowCartModel] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cartItem, setCartItem] = useState(); //kani waa
+  const [cartItem, setCartItem] = useState<any>(); //kani waa
   const [customer, setCustomer] = useState("");
   //   const [addToCart, setAddtoCart] = useState(null);
   const [addedToCartModel, setAddtoCartModel] = useState(false);
-  const [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState<any>({});
 
   const [guestCount, setGuestCount] = useState(1);
   const [activeCategory, setActiveCategory] = useState("");
@@ -48,8 +37,10 @@ const WelcomePage = () => {
   };
   const decrement = () => {
     if (guestCount <= 0) return;
+
     setGuestCount((prev) => prev - 1);
   };
+  console.log(itemId, customer);
 
   const handleCreateOrder = () => {
     if (!phone || !name || !guestCount) {
@@ -66,7 +57,7 @@ const WelcomePage = () => {
     };
     addUser(newUser);
     localStorage.setItem("user", JSON.stringify(newUser));
-    setIsModalOpen(false);
+
     toast.success("you can reservered postion now", { position: "top-right" });
     setSkiped(false);
   };
@@ -86,7 +77,7 @@ const WelcomePage = () => {
     // setItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const customerData = useUserStore((state) => state.user);
+  const customerData = useUserStore((state: any) => state.user);
   const addItem = useItemStore((state: any) => state.addItem);
   const addUser = useUserStore((state) => state.addUser);
   console.log("customerData", customerData);
@@ -94,7 +85,7 @@ const WelcomePage = () => {
 
   //   const subtotal = items?.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  const filteredItems = selected?.items?.filter((item) => {
+  const filteredItems = selected?.items?.filter((item: any) => {
     const matchesCategory = item.category === activeCategory;
     const matchesSearch = item.name
       ?.toLowerCase()
@@ -479,7 +470,7 @@ const WelcomePage = () => {
             <div className="p-4">
               {filteredItems?.length > 0 ? (
                 <div className="grid gap-4">
-                  {filteredItems?.map((item) => (
+                  {filteredItems?.map((item: any) => (
                     <div
                       key={item.id}
                       className="flex items-start gap-2 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
@@ -629,7 +620,7 @@ const WelcomePage = () => {
 
             {/* Cart Items */}
             <div className="mt-4 space-y-4 min-h-[550px] overflow-y-auto pr-1">
-              {items.map((item) => (
+              {items.map((item: any) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between border-b pb-3"

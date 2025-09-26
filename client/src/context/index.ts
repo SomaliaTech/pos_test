@@ -1,4 +1,4 @@
-export const formatDateAndTime = (date) => {
+export const formatDateAndTime = (date: any) => {
   const dateAndTime = new Date(date).toLocaleString("en-US", {
     month: "long",
     day: "2-digit",

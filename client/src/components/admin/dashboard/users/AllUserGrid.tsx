@@ -1,15 +1,13 @@
 "use client";
-import React, { useEffect, useId, useState } from "react";
+import { useState } from "react";
 import Box from "@mui/material/Box";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 import { FaDeleteLeft } from "react-icons/fa6";
-import { FaRegEdit } from "react-icons/fa";
 
 import { format } from "timeago.js";
 
 import { MdEmail } from "react-icons/md";
-import { Modal, Typography } from "@mui/material";
-import toast from "react-hot-toast";
+import { Modal } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { axiosIntence } from "../../../../lib/axiosIntence";
 
@@ -18,7 +16,7 @@ type Props = {
 };
 
 function AlllUsersGrid({ isTeam }: Props) {
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["users_gas"],
     queryFn: async () => {
       try {
@@ -36,7 +34,7 @@ function AlllUsersGrid({ isTeam }: Props) {
   const [email, setEmail] = useState("");
   const [change, setChange] = useState("user");
   const [active, setActive] = useState(false);
-
+  console.log(userId, change);
   const handleDelete = async () => {
     // await deleteUser(userId);
   };
@@ -116,7 +114,7 @@ function AlllUsersGrid({ isTeam }: Props) {
       rows.push({
         id: item._id,
         name: item.name,
-        total: `$${item.totalDebt}`,
+        total: Number(`$${item.totalDebt}`),
         email: item.email,
         role: item.role,
         created_at: format(item.createdAt),

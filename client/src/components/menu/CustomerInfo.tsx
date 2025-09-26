@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { axiosIntence } from "../../lib/axiosIntence";
 import { useQuery } from "@tanstack/react-query";
-import { format } from "timeago.js";
 import { v4 as uuidv4 } from "uuid";
 import itemUserStore from "../../lib/itemUserStore";
 import { formatDateAndTime } from "../../context";
@@ -122,7 +121,7 @@ const CustomerInfo = () => {
               {/* Order list */}
               <div className="mt-4 overflow-y-scroll h-[300px] scrollbar-hide">
                 {filteredUsers?.length > 0 ? (
-                  filteredUsers.map((order) => {
+                  filteredUsers.map((order: any) => {
                     return (
                       <div
                         onClick={() => {

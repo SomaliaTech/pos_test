@@ -20,7 +20,7 @@ const MenuContainer = () => {
     },
   });
 
-  const [selected, setSelected] = useState();
+  const [selected, setSelected] = useState<any>();
   const [itemCount, setItemCount] = useState(0);
 
   const [itemId, setItemId] = useState("");

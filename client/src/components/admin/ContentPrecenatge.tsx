@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaChevronDown, FaChevronUp, FaUser } from "react-icons/fa";
 import { FaChartColumn } from "react-icons/fa6";
 import { Link } from "react-router-dom";
@@ -93,7 +93,10 @@ function ContentPrecenatge() {
       <div
         className={`border-1 flex h-[200px] min-w-[250px] flex-col justify-between text-white  bg-[#383838] shadow-md rounded-md flex-1 py-2 px-3`}
       >
-        <div className="flex items-center justify-between w-full">
+        <div
+          onClick={() => setOrdersPrecentages(ordersPrecentages)}
+          className="flex items-center justify-between w-full"
+        >
           <span>ORDERS</span>
           <div className="flex items-center gap-1 text-green-500">
             {ordersPrecentages.precentage > 0 ? (
@@ -114,7 +117,10 @@ function ContentPrecenatge() {
           </div>
         </div>
         <h2 className="text-xl">{ordersPrecentages.currentmont}</h2>
-        <div className="flex items-center justify-between w-full">
+        <div
+          onClick={() => setUsersPrecentages(usersPrecentages)}
+          className="flex items-center justify-between w-full"
+        >
           <Link to={"teacher/orders-analytics"} className="underline pb-2">
             View all Orders
           </Link>

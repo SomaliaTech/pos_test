@@ -1,4 +1,3 @@
-"use client";
 import { useRef, useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
@@ -8,7 +7,6 @@ import { axiosIntence } from "../../../lib/axiosIntence";
 import { BsEye } from "react-icons/bs";
 import { BiPrinter } from "react-icons/bi";
 import { formatDateAndTime } from "../../../context";
-import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import useOrderDetailsStore from "../../../lib/order-details-store";
 function OrderHistoryCard() {

@@ -57,7 +57,7 @@ const useOrderDetailsStore = create<ItemStore>((set) => ({
     };
 
     set((state) => {
-      const alreadyExists = state.items?.some((item) => item._id === _id);
+      const alreadyExists = state.items?.some((item: any) => item._id === _id);
       if (alreadyExists) return state;
 
       return {
@@ -68,7 +68,7 @@ const useOrderDetailsStore = create<ItemStore>((set) => ({
 
   removeItem: (id: string) => {
     set((state) => ({
-      items: state.items.filter((item) => item._id !== id),
+      items: state.items.filter((item: any) => item._id !== id),
     }));
   },
 

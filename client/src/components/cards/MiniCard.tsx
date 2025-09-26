@@ -1,13 +1,13 @@
-import React from "react";
+import type React from "react";
 
 type ICard = {
   title: string;
-  icon: object;
+  icon: React.ReactNode;
   number: number;
   footerNum: number;
   descriptions: string;
 };
-const MiniCard = ({ title, icon, number, footerNum, descriptions }: ICard) => {
+const MiniCard = ({ title, icon, number, descriptions }: ICard) => {
   console.log("title", title, "descriptions", descriptions);
   return (
     <div className="bg-[#F9FBFA] py-5 px-5 rounded-lg w-[100%]">

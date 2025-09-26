@@ -1,5 +1,3 @@
-import React from "react";
-
 import DashboardHero from "../../../components/admin/DashboardHero";
 import AdminSidebar from "../../../components/admin/sidebar/AdminSidebar";
 import AlllUsersGrid from "../../../components/admin/dashboard/users/AllUserGrid";

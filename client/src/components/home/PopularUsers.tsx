@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { axiosIntence } from "../../lib/axiosIntence";
 import { useQuery } from "@tanstack/react-query";
-import itemUserStore from "../../lib/itemUserStore";
+import itemUserStore, { type IUser } from "../../lib/itemUserStore";
 import { useNavigate } from "react-router-dom";
 
 const PopularUsers = () => {
@@ -34,7 +34,7 @@ const PopularUsers = () => {
   }, [search, data, isLoading]);
   // console.log("filter", filteredUsers);
 
-  const handleUser = (user) => {
+  const handleUser = (user: IUser) => {
     dispatch(user);
     navigate("/menu");
   };
@@ -59,7 +59,7 @@ const PopularUsers = () => {
           <h1>loading...</h1>
         ) : (
           <div className="overflow-y-scroll h-[680px] scrollbar-hide">
-            {filteredUsers?.map((user) => {
+            {filteredUsers?.map((user: any) => {
               return (
                 <div
                   key={user?._id}

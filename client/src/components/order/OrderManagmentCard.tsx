@@ -1,13 +1,12 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { BiSearch } from "react-icons/bi";
 import { axiosIntence } from "../../lib/axiosIntence";
 import { formatDateAndTime } from "../../context";
 import toast from "react-hot-toast";
 
 export default function OrderManagementCard() {
   const [tab, setTab] = useState("all");
-  const { data: ordetInfo, isLoading } = useQuery({
+  const { data: ordetInfo } = useQuery({
     queryKey: ["orders_gas"],
     queryFn: async () => {
       const res = await axiosIntence.get("/api/orders");
@@ -42,7 +41,7 @@ export default function OrderManagementCard() {
   ];
 
   // Status badge UI
-  const StatusBadge = ({ status }: { status: string }) => {
+  const StatusBadge = ({ status, order }: { status: string; order: any }) => {
     const [statusState, setStutusState] = useState(
       status === "In Progress"
         ? "Preparing"
@@ -55,11 +54,11 @@ export default function OrderManagementCard() {
       Preparing: "bg-yellow-100 text-yellow-600",
       Confirmed: "bg-blue-100 text-blue-600",
     };
-    //  const tableData = {
-    //         status: "reserved",
-    //         orderId: order.data._id,
-    //         tableId: order.data.table,
-    //       };
+    const tableData = {
+      status: "reserved",
+      orderId: order.data._id,
+      tableId: order.data.table,
+    };
     const tableMutate = useMutation({
       mutationKey: ["update_table"],
       mutationFn: async (data: any) => {
@@ -80,11 +79,12 @@ export default function OrderManagementCard() {
     });
     return (
       <span
-        onClick={() =>
+        onClick={() => {
           setStutusState((prev) =>
             prev === "Preparing" ? "Confirmed" : "Finished"
-          )
-        }
+          );
+          tableMutate.mutate(tableData);
+        }}
         className={`px-4 py-2 text-sm font-medium cursor-pointer rounded-full ${styles[statusState]}`}
       >
         {statusState}
@@ -144,7 +144,7 @@ export default function OrderManagementCard() {
         <div className="col-span-6 h-[calc(100vh-9rem)]  space-y-2 overflow-y-auto bg-white rounded-xl shadow p-4">
           {" "}
           <h2 className="font-semibold mb-3">Dine-In Orders</h2>
-          {ordetInfo?.map((order, idx) => (
+          {ordetInfo?.map((order: any, idx: number) => (
             <div
               key={idx}
               className=" border border-gray-200 rounded-lg p-4 bg-blue-50/30 hover:shadow-md transition"
@@ -154,6 +154,7 @@ export default function OrderManagementCard() {
                   #{order._id?.substring(0, 9)}
                 </p>
                 <StatusBadge
+                  order={order}
                   status={
                     order.orderStatus == "In Progress"
                       ? "Preparing"
@@ -170,7 +171,7 @@ export default function OrderManagementCard() {
               </p>
               {order.items.length > 0 && (
                 <ul className="text-sm space-y-1">
-                  {order.items.map((item, i) => (
+                  {order.items.map((item: any, i: number) => (
                     <li key={i}>
                       1x {item.name}{" "}
                       {item.size && (
@@ -196,7 +197,7 @@ export default function OrderManagementCard() {
             >
               <div className="flex justify-between items-center mb-2">
                 <p className="text-purple-600 font-medium">{order.id}</p>
-                <StatusBadge status={order.status} />
+                <StatusBadge order={order} status={order.status} />
               </div>
               <p className="text-sm text-gray-700">Token No: {order.token}</p>
               <p className="text-xs text-gray-500">{order.time}</p>

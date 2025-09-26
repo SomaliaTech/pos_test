@@ -1,9 +1,8 @@
-import React from "react";
 import { FaCheckDouble, FaLongArrowAltRight } from "react-icons/fa";
 import { FaCircle } from "react-icons/fa";
 import { formatDateAndTime } from "../../context";
 
-const OrderCard = ({ key, order }) => {
+const OrderCard = ({ key, order }: { key: any; order: any }) => {
   console.log(order);
   return (
     <div key={key} className=" w-full bg-[#fff] p-4 rounded-lg mb-4">

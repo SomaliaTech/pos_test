@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from "react";
-
-import {
-  FaRecordVinyl,
-  FaUsers,
-  FaUserShield,
-  FaWpforms,
-} from "react-icons/fa";
+import { FaUsers, FaUserShield } from "react-icons/fa";
 import { AiFillHome, AiOutlineForm } from "react-icons/ai";
-import { FaRegListAlt } from "react-icons/fa";
 import { FaSkyatlas } from "react-icons/fa6";
-import { MdAnalytics, MdOutlineVideoSettings } from "react-icons/md";
+import { MdAnalytics } from "react-icons/md";
 import { TiVideo } from "react-icons/ti";
 import { MdQuiz } from "react-icons/md";
 
 import { GrAnalytics } from "react-icons/gr";
-import toast from "react-hot-toast";
 import { SiApostrophe } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 function AdminSidebar() {
-  function logout(event: MouseEvent<HTMLDivElement, MouseEvent>): void {
+  const logout = () => {
     throw new Error("Function not implemented.");
-  }
+  };
 
   // const [logout, { isSuccess, error, data }] = useLogoutMutation();
 

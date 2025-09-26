@@ -1,0 +1,410 @@
+export const menus = [
+  {
+    categoryName: "non-vegetarian",
+    name: "Raashinka",
+    bgColor: "#0DAA2A",
+    icon: "🍛",
+    items: [
+      {
+        name: "Baasto Haaf",
+        price: 4,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?pasta",
+      },
+      {
+        name: "Bariis Kooto",
+        price: 3,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?rice",
+      },
+      {
+        name: "Canjeelo Somalia",
+        price: 450,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?somali-food",
+      },
+      {
+        name: "Soor",
+        price: 1,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?cornmeal",
+      },
+      {
+        name: "Canboolo",
+        price: 3,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?beans",
+      },
+      {
+        name: "Baasto Makarooni",
+        price: 500,
+        category: "non-vegetarian",
+        image: "https://source.unsplash.com/featured/?macaroni",
+      },
+    ],
+  },
+  {
+    categoryName: "Hot",
+    bgColor: "#7f167f",
+    icon: "☕️",
+    items: [
+      {
+        name: "Coffee Cadees",
+        price: 5,
+        category: "Hot",
+        image: "https://source.unsplash.com/featured/?coffee",
+      },
+      {
+        name: "Shaah Cadees ",
+        price: 3,
+        category: "Hot",
+        image: "https://source.unsplash.com/featured/?iced-tea",
+      },
+      {
+        name: " Daqar",
+        price: 120,
+        category: "Hot",
+        image: "https://source.unsplash.com/featured/?herbal-tea",
+      },
+      {
+        name: "Coffee",
+        price: 150,
+        category: "Hot",
+        image: "https://source.unsplash.com/featured/?cold-brew",
+      },
+    ],
+  },
+  {
+    categoryName: "Vegetarian",
+    name: "Maraq",
+    bgColor: "#735f32",
+    icon: "🥣",
+    items: [
+      {
+        name: "Maraqa Doorada",
+        price: 20,
+        category: "Vegetarian",
+        image: "https://source.unsplash.com/featured/?vegetable-soup",
+      },
+      {
+        name: "Tomato Soup",
+        price: 2,
+        category: "Vegetarian",
+        image: "https://source.unsplash.com/featured/?tomato-soup",
+      },
+      {
+        name: "Hot & Sour Soup",
+        price: 140,
+        category: "Vegetarian",
+        image: "https://source.unsplash.com/featured/?hot-and-sour-soup",
+      },
+      {
+        name: "Chicken Clear Soup",
+        price: 160,
+        category: "Non-Vegetarian",
+        image: "https://source.unsplash.com/featured/?chicken-soup",
+      },
+      {
+        name: "Mushroom Soup",
+        price: 150,
+        category: "Vegetarian",
+        image: "https://source.unsplash.com/featured/?mushroom-soup",
+      },
+      {
+        name: "Lemon Coriander Soup",
+        price: 110,
+        category: "Vegetarian",
+        image: "https://source.unsplash.com/featured/?lemon-soup",
+      },
+    ],
+  },
+  {
+    categoryName: "dessert",
+    name: "Macmacaanka",
+    bgColor: "#1d2569",
+    icon: "🥮",
+    items: [
+      {
+        name: "Gulab Jamun",
+        price: 1,
+        category: "dessert",
+        image: "https://source.unsplash.com/featured/?gulab-jamun",
+      },
+      {
+        name: "Kulfi",
+        price: 10,
+        category: "dessert",
+        image: "https://source.unsplash.com/featured/?kulfi",
+      },
+      {
+        name: "Chocolate  ",
+        price: 2,
+        category: "dessert",
+        image: "https://source.unsplash.com/featured/?chocolate",
+      },
+      {
+        name: "Sanbuus",
+        price: 3,
+        category: "dessert",
+        image: "https://source.unsplash.com/featured/?samosa",
+      },
+      {
+        name: "Bur",
+        price: 1,
+        category: "dessert",
+        image: "https://source.unsplash.com/featured/?cake",
+      },
+    ],
+  },
+  {
+    categoryName: "pizza",
+    name: "Pizzas",
+    bgColor: "#285430",
+    icon: "🍕",
+    items: [
+      {
+        name: "Margherita Pizza",
+        price: 350,
+        category: "pizza",
+        image: "https://source.unsplash.com/featured/?margherita-pizza",
+      },
+      {
+        name: "Veg Supreme Pizza",
+        price: 400,
+        category: "pizza",
+        image: "https://source.unsplash.com/featured/?veg-pizza",
+      },
+      {
+        name: "Pepperoni Pizza",
+        price: 450,
+        category: "pizza",
+        image: "https://source.unsplash.com/featured/?pepperoni-pizza",
+      },
+    ],
+  },
+  {
+    categoryName: "drinks",
+    bgColor: "#FD8018",
+    name: "Cabitaanada",
+    icon: "🍷",
+    items: [
+      {
+        name: "Water Yar",
+        price: 0.6,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?water",
+      },
+      {
+        name: "Juus",
+        price: 4,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?juice",
+      },
+      {
+        name: "AFakaadho",
+        price: 2,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?avocado-juice",
+      },
+      {
+        name: "Qaro",
+        price: 3,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?melon-juice",
+      },
+      {
+        name: "CocaCola",
+        price: 2,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?coca-cola",
+      },
+      {
+        name: "Water wayn",
+        price: 400,
+        category: "drinks",
+        image: "https://source.unsplash.com/featured/?bottle-water",
+      },
+    ],
+  },
+  {
+    categoryName: "salads",
+    name: "Salads",
+    bgColor: "#5b45b0",
+    icon: "🥗",
+    items: [
+      {
+        name: "Caesar Salad",
+        price: 200,
+        category: "salads",
+        image: "https://source.unsplash.com/featured/?caesar-salad",
+      },
+      {
+        name: "Greek Salad",
+        price: 250,
+        category: "salads",
+        image: "https://source.unsplash.com/featured/?greek-salad",
+      },
+      {
+        name: "Fruit Salad",
+        price: 150,
+        category: "salads",
+        image: "https://source.unsplash.com/featured/?fruit-salad",
+      },
+      {
+        name: "Chicken Salad",
+        price: 300,
+        category: "salads",
+        image: "https://source.unsplash.com/featured/?chicken-salad",
+      },
+      {
+        name: "Tuna Salad",
+        price: 350,
+        category: "salads",
+        image: "https://source.unsplash.com/featured/?tuna-salad",
+      },
+    ],
+  },
+];
+
+// Sample table data
+const tableData = [
+  {
+    time: "12:00 PM",
+    tableNo: 2,
+    seats: 7,
+
+    status: "available",
+  },
+  {
+    time: new Date(),
+    tableNo: 3,
+    seats: 2,
+    status: "available",
+  },
+  {
+    time: new Date(),
+    tableNo: 4,
+    seats: 4,
+    status: "available",
+  },
+  {
+    time: new Date(),
+    tableNo: 5,
+    seats: 5,
+    status: "available",
+  },
+];
+const users = [
+  {
+    name: "Ali Mohamed",
+    email: "ali1@example.com",
+    phone: 612345678,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Khadija Abdi",
+    email: "khadija2@example.com",
+    phone: 612345679,
+    password: "password123",
+    role: "admin",
+  },
+  {
+    name: "Hassan Noor",
+    email: "hassan3@example.com",
+    phone: 612345680,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Fatima Yusuf",
+    email: "fatima4@example.com",
+    phone: 612345681,
+    password: "password123",
+    role: "moderator",
+  },
+  {
+    name: "Ayaan Omar",
+    email: "ayaan5@example.com",
+    phone: 612345682,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Abdi Warsame",
+    email: "abdi6@example.com",
+    phone: 612345683,
+    password: "password123",
+    role: "admin",
+  },
+  {
+    name: "Zahra Ahmed",
+    email: "zahra7@example.com",
+    phone: 612345684,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Ismail Farah",
+    email: "ismail8@example.com",
+    phone: 612345685,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Nimco Ali",
+    email: "nimco9@example.com",
+    phone: 612345686,
+    password: "password123",
+    role: "moderator",
+  },
+  {
+    name: "Mohamed Diriye",
+    email: "mohamed10@example.com",
+    phone: 612345687,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Ladan Barre",
+    email: "ladan11@example.com",
+    phone: 612345688,
+    password: "password123",
+    role: "admin",
+  },
+  {
+    name: "Yasin Ibrahim",
+    email: "yasin12@example.com",
+    phone: 612345689,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Hodan Muse",
+    email: "hodan13@example.com",
+    phone: 612345690,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Jama Mohamed",
+    email: "jama14@example.com",
+    phone: 612345691,
+    password: "password123",
+    role: "user",
+  },
+  {
+    name: "Maryan Ali",
+    email: "maryan15@example.com",
+    phone: 612345692,
+    password: "password123",
+    role: "moderator",
+  },
+];
+const data = {
+  menus,
+  tableData,
+
+  users,
+};
+export default data;

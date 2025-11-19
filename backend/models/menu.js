@@ -5,12 +5,21 @@ const menuSchema = new mongoose.Schema(
     name: String,
     icon: String,
     categoryName: String,
+
     items: [
       {
         name: String,
         price: Number,
         category: String,
-        image: String,
+        image: {
+          public_id: String,
+          url: String,
+        },
+
+        createdAt: {
+          type: Date,
+          default: Date.now,
+        },
       },
     ], // optionally you could reference items if normalized
   },

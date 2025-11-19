@@ -7,7 +7,7 @@ import {
   updateOrder,
 } from "../controllers/order.js";
 
-const router = express();
+const router = express.Router();
 
 router.post("/create", addOrder);
 router.get("/", getOrders);

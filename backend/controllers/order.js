@@ -175,3 +175,52 @@ export const updateOrder = async (req, res, next) => {
     next(error);
   }
 };
+
+export const orderOverViewWeekly = async (req, res) => {
+  try {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    const data = await orderModel.aggregate([
+      {
+        $match: {
+          createdAt: { $gte: oneWeekAgo },
+        },
+      },
+      {
+        $group: {
+          _id: { $dayOfWeek: "$createdAt" },
+          orders: { $sum: 1 },
+        },
+      },
+      { $sort: { _id: 1 } },
+    ]);
+
+    // Map MongoDB dayOfWeek (1=Sunday ... 7=Saturday) to readable names
+    const dayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    const overview = Array.from({ length: 7 }).map((_, i) => {
+      const found = data.find((d) => d._id === i + 1);
+      return {
+        day: dayNames[i],
+        orders: found ? found.orders : 0,
+      };
+    });
+
+    res.json({
+      success: true,
+      overview,
+    });
+  } catch (error) {
+    console.error("Error fetching weekly order overview:", error);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
